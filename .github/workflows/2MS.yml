@@ -1,23 +1,27 @@
 name: 2MS Secret Detection
 
-on: 
+on:
   push:
   pull_request:
   workflow_dispatch:
 
 jobs:
-  Secret-detection: 
+  secret-detection:
     runs-on: ubuntu-latest
 
     steps:
-      -name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      -name: Install Go 
-      uses: actions/setup-go@v4
-      with:
-        go-version: '1.22'
+      - name: Install Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.22'
 
-      -name: Install 2MS
-      run: |
-        2MS filesystem .
+      - name: Install 2MS
+        run: |
+          go install github.com/Checkmarx/2ms/v4@latest
+
+      - name: Show 2MS Help
+        run: |
+          2ms --help
