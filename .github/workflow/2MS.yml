@@ -1,0 +1,23 @@
+name: 2MS Secret Detection
+
+on: 
+  Push:
+  pull_request:
+  workflow_dispatch
+
+jobs:
+  Secret-detection: 
+    Runs-on: ubuntu-latest
+
+    steps:
+      -name: Checkout repository
+      uses: actions/checkout@v4
+
+      -name: Install Go 
+      uses: actions/setup-go@v4
+      with:
+        go-version: '1.22'
+
+      -name: Install 2MS
+      run: |
+        2MS filesystem .
