@@ -1,13 +1,13 @@
 name: 2MS Secret Detection
 
 on: 
-  Push:
+  push:
   pull_request:
-  workflow_dispatch
+  workflow_dispatch:
 
 jobs:
   Secret-detection: 
-    Runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       -name: Checkout repository
